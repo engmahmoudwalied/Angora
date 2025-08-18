@@ -51,19 +51,24 @@ h1, h2, h3, h4, h5, h6{
   transition: var(--transition);   
 }
 .navbar-dark .nav-link{
-  color: #fff !important;
+  color: #fff;
 }
 .navbar-light .nav-link{
-  color: var(--heading-color) !important;
+  color: var(--heading-color);
 }
 .navbar a:hover, .nav-link.active{
-  color: var(--main-color) !important
+  color: var(--main-color);
 }
 .nav-link{
-  padding: 0 15px !important;
+  padding: 0 15px;
   font-size: 13px;
   font-weight: var(--fw-600);
   letter-spacing: .5px;
+}
+/* Focus states for accessibility */
+.nav-link:focus {
+  outline: 2px solid var(--main-color);
+  outline-offset: 2px;
 }
 
 .nav-icons{
@@ -79,15 +84,15 @@ h1, h2, h3, h4, h5, h6{
       text-align: center;
   }
   .navbar a{
-      padding-top: 1%  !important;
-      padding-bottom: 1%  !important;
+      padding-top: 1%;
+      padding-bottom: 1%;
       color: #282828;
   }
   .navbar-dark .nav-link{
-      color: var(--heading-color) !important;
+      color: var(--heading-color);
   }
   .nav-link.active{
-      color: var(--main-color) !important
+      color: var(--main-color);
   }
   .in{
       background-color: #fff;
@@ -196,7 +201,7 @@ h1, h2, h3, h4, h5, h6{
 @keyframes scroll
 {
   0%{ 
-      top: 20%;
+      transform: translateX(-50%) translateY(-80%);
       opacity: 0;
   }
   50%{ 
@@ -206,12 +211,13 @@ h1, h2, h3, h4, h5, h6{
       opacity: .5;
   }
   100%{ 
-      top: 60%;
+      transform: translateX(-50%) translateY(20%);
       opacity: 0;
   }
 }
-.home .scroll:hover{
-  border-color: var(--main-color) !important
+.home .scroll:hover,
+.home .scroll:focus{
+  border-color: var(--main-color);
 }
 .home .scroll:hover::after{
   background-color: var(--main-color)
@@ -290,9 +296,20 @@ h1, h2, h3, h4, h5, h6{
   color: #fff;
   border: none;
   transition: var(--transition);
+  cursor: pointer;
 }
 .main-btn:hover{
   background-color: #f38383;
+}
+/* Accessibility: Focus states for buttons */
+.main-btn:focus {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 5px rgba(242, 84, 84, 0.3);
+}
+.main-btn:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
 }
 /* Info Section Media Query */
 @media screen and (max-width: 767px){
@@ -415,10 +432,17 @@ margin-bottom: 20px;
   text-align: center;
   cursor: pointer;
   transition: var(--transition);
+  text-decoration: none;
 }
-.to-top:hover{
+.to-top:hover,
+.to-top:focus{
   background-color: var(--main-color);
   color: #fff;
+}
+/* Accessibility: Focus state for to-top button */
+.to-top:focus {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
 }
 .widget h5{
   color: #fff;
